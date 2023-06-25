@@ -27,7 +27,6 @@ def convert_date(iso_string):
     new_date = datetime.strptime(iso_string, "%Y-%m-%dT%H:%M:%S%z")
     return new_date.strftime("%A %d %B %Y")
 
-#google how to change the formmat
     
 
 
@@ -41,7 +40,7 @@ def convert_f_to_c(temp_in_farenheit):
     """
     celsius = (float(temp_in_farenheit)-32)*5.0/9.0
     return round(float(celsius),1)
-    #calculation
+    
     
 
 
@@ -62,7 +61,7 @@ def calculate_mean(weather_data):
         total = total + temp
     return float(total/number_data)
 
-    #calculation
+
 
 
 
@@ -140,7 +139,6 @@ def generate_summary(weather_data):
         A string containing the summary information.
     """
     ndays = len(weather_data)
-    # print(weather_data[2][0])
     # min_temp = value[1]
     min_list = [] 
     max_list = []
@@ -148,9 +146,9 @@ def generate_summary(weather_data):
          min_list.append(float(value[1]))
          max_list.append(float(value[2]))
     
-    lowest_temp, index = (find_min(min_list))  # (49.0, 0)
+    lowest_temp, index = (find_min(min_list))  
     convert_date(weather_data[index][0])
-    max_temp, index1 = (find_max(max_list))  #(68.0, 1)
+    max_temp, index1 = (find_max(max_list))  
     convert_date(weather_data[index1][0])
     calculate_mean(min_list)
     calculate_mean(max_list)
@@ -161,8 +159,6 @@ def generate_summary(weather_data):
     output += f"  The average low this week is {format_temperature(convert_f_to_c(calculate_mean(min_list)))}.\n"
     output += f"  The average high this week is {format_temperature(convert_f_to_c(calculate_mean(max_list)))}.\n"
     return output
-
-
 
 
 
@@ -182,22 +178,15 @@ def generate_daily_summary(weather_data):
            output += f"  Maximum Temperature: {format_temperature(convert_f_to_c(row_weatherdata[2]))}\n\n"
     return output
 
-example_one = [
-            ["2021-07-02T07:00:00+08:00", 49, 67],
-            ["2021-07-03T07:00:00+08:00", 57, 68],
-            ["2021-07-04T07:00:00+08:00", 56, 62],
-            ["2021-07-05T07:00:00+08:00", 55, 61],
-            ["2021-07-06T07:00:00+08:00", 53, 62]
-        ]
+# example_one = [
+#             ["2021-07-02T07:00:00+08:00", 49, 67],
+#             ["2021-07-03T07:00:00+08:00", 57, 68],
+#             ["2021-07-04T07:00:00+08:00", 56, 62],
+#             ["2021-07-05T07:00:00+08:00", 55, 61],
+#             ["2021-07-06T07:00:00+08:00", 53, 62]
+#         ]
 
 
-print(generate_daily_summary(example_one))
+# print(generate_daily_summary(example_one))
 
-
-    
-
-# print (f"---- {Friday 02 July 2021} ----\
-#          Minimum Temperature: {9.4°C}\
-#          Maximum Temperature: {19.4°C}")
- 
  
